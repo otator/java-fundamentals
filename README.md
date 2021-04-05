@@ -30,3 +30,23 @@ for testing -> call the method: `clock();` and it must return something like:
 **.**
 
 **.**
+
+## Lab_02
+
+in this lan we practiced Arrays, loops, methods and testing libraries.
+inside [Library.java](./basicslibrary/lib/src/main/java/basicibrary/Library.java) we wrote 4 methods.
+
+
+1. roll(int n)-> it returns an array with the size of n with numbers of dice faces(1-6).
+2. containsDuplicates(int[] arr) -> it return true if there is any duplication in the *arr* values.
+3. calculatingAverages(int[] arr) -> it returns the average of the *arr*.
+4. calculateArraysAverage(int[][] arr) -> returns the array with the minumum average among 2-D *arr*.
+
+and in [LibraryTest.java]("./basicslibrary/lib/src/test/java/basicibrary/Library.java") we wrote 4 methods to test our methods.
+
+1. testRollMethod() -> it tests the **roll()** method with two cases, where size is 0 and 10.
+2. testContainsDuplicatesMethod() -> it tests the **containsDuplicates()** method with three cases, where the first and the second arrays have no duplicated values(but the second has only 1 element), and the last third array has duplicated values.
+3. testCalculatingAveragesMethod() -> it tests the **calculatingAverages()** method with three cases, while the first two arrays has only positive numbers, the second array has both negative and positive numbers, and the last array is an empty array
+4. testCalculateArraysAverageMethod() -> it tests the **calculateArraysAverage()** method with two cases, while the first case was 2-D array, the second array has no elements.
+
+
