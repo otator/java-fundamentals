@@ -3,7 +3,9 @@
  */
 package basiclibrary;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Library {
@@ -60,5 +62,80 @@ public class Library {
             return new int[0];
         }
 
+    }
+
+    public HashMap<String, Integer> analyzeWeather(int[][] arr){
+        HashMap<String, Integer> map = new HashMap<>();
+        HashMap<Integer, Integer> uniqueTemps = new HashMap<>();
+        for(int[] i: arr) {
+            for (int j : i){
+                //if temp is not in the map, add it
+                if(!uniqueTemps.containsKey(j))
+                    uniqueTemps.put(j, 1);
+                // if the temp is in the map increase the value by one
+                else
+                    uniqueTemps.put(j, uniqueTemps.get(j) +1);
+            }
+        }
+        //add highest and lowest temp to the map
+        map.put("max", getMax(arr));
+        map.put("min", getMin(arr));
+
+        //add the unique temps to the map
+        int index = 0;
+        for(Integer i: uniqueTemps.keySet()){
+            if(uniqueTemps.get(i) == 1){
+                map.put(index+"", i);
+                index++;
+            }
+
+        }
+
+        //add the size of the unique temps to the map
+        map.put("size", index);
+        return map;
+    }
+
+    public Integer getMax(int[][] arr){
+        Integer max = arr[0][0];
+        for(int[] i: arr) {
+            for (int j : i){
+                if(j > max)
+                    max = j;
+            }
+        }
+        return max;
+    }
+
+    public Integer getMin(int[][] arr){
+        Integer min = arr[0][0];
+        for(int[] i: arr) {
+            for (int j : i){
+                if(j < min)
+                    min = j;
+            }
+        }
+        return min;
+    }
+
+    public String tally(List<String> listOfVotes){
+        HashMap<String, Integer> votes = new HashMap<>();
+//        String mostVoted = listOfVotes.get(0);
+        for(String elector: listOfVotes){
+            if(!votes.containsKey(elector)){
+                votes.put(elector, 1);
+            }else{
+                votes.put(elector, votes.get(elector) +1);
+            }
+        }
+        Integer mostVoted = 0;
+        String mostVotedElector = "";
+        for(String name: votes.keySet()){
+            if(votes.get(name) > mostVoted){
+                mostVoted = votes.get(name);
+                mostVotedElector = name;
+            }
+        }
+        return mostVotedElector;
     }
 }

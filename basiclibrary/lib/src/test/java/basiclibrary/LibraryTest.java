@@ -5,7 +5,10 @@ package basiclibrary;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -62,4 +65,53 @@ public class LibraryTest {
         assertEquals("this method should return empty array",0,
                 library.calculateArraysAverage(arr).length);
     }
+
+    @Test
+    public void testAnalyzeWeather(){
+        Library library = new Library();
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        HashMap<String, Integer> map = library.analyzeWeather(weeklyMonthTemperatures);
+
+        Integer expectedMin = 51;
+        Integer actualMin = map.get("min");
+        assertEquals("This method checks the expectedMin which is 51 with actual", expectedMin, actualMin);
+        System.out.println("Low: " + actualMin);
+
+        Integer expectedMax = 72;
+        Integer actualMax = map.get("max");
+        assertEquals("This method checks the expectedMin which is 51 with actual", expectedMax, actualMax);
+        System.out.println("High: " + actualMax);
+
+        Integer[] expectedUniqueTemps = {64,66,70,71,72,51,52,53,54,56,58,59,61,62};
+        Integer size = map.get("size");
+        for(int i=0; i<size; i++){
+            assertEquals("method will check every expected temp with actual temp", expectedUniqueTemps[i], map.get(i+""));
+            System.out.println("Never saw temperature: " + map.get(i+""));
+        }
+    }
+
+    @Test
+    public void testTally(){
+        Library library = new Library();
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+        String expectedWinner = "Bush";
+        String winner = library.tally(votes);
+        System.out.println(winner + " received the most votes!");
+        assertEquals("This method tests that Bush got the most votes", expectedWinner, winner);
+    }
+
 }

@@ -50,3 +50,36 @@ and in [LibraryTest.java]("./basicslibrary/lib/src/test/java/basicibrary/Library
 4. testCalculateArraysAverageMethod() -> it tests the **calculateArraysAverage()** method with two cases, while the first case was 2-D array, the second array has no elements.
 
 
+## Lab_03
+in today's lab I have done the follwoing in [Library.java](basiclibrary/lib/src/main/java/basiclibrary/Library.java)
+
+* method called `analyzeWeather()` has been created to loop over temperatures 2-D array, and prints out the minimum and the maximum temperatures.
+
+it also print out the unique temerature among the month.
+
+this method uses two helper methods `getMin()` and `getMax()` to get minimum and maximum temperatrues.
+
+* a method called `tally()` that returns the most voted elector from a list.
+
+* method `javaScriptLinter()` takes in a file and scan it to check whether a line that should ends with a semicolon, didn't.
+
+the method `javaScriptLinter()` uses helper method called `check()` that takes in a string and character to check if the string ends with that chacacter. 
+
+The first two methods has been tested in [LibraryTest.java](basiclibrary/lib/src/test/java/basiclibrary/LibraryTest.java) with the following methods
+
+* `testAnalyzeWeather()` tests `analyzeWeather()` with 2-D array for the temerature for one month.
+* `testTally()` tests `tally()` with a list of votes for some electors
+
+to test the method `javaScriptLinter()`, a new method created `testJavaScriptLinter()` in [AppTest.java](linter/app/src/test/java/linter/AppTest.java)
+
+this method tests `javaScriptLinter()` with five different files as described in [README.md](linter/README.md)
+
+
+
+
+
+
+
+
+
+
