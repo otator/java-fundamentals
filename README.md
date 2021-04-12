@@ -76,6 +76,21 @@ this method tests `javaScriptLinter()` with five different files as described in
 
 
 
+## Lab_06 
+in this lab there is one concrete class had been created in addition to one interface
+
+1. `Review: interface` is an [interface](inheritance/lib/src/main/java/inheritance/Review.java) that has only one method which is `addReview`.
+
+2. `Restaurant: class` is a [class](inheritance/lib/src/main/java/inheritance/Restaurant.java) that implements the `Review` interface and has the following:
+
+    * a constructor that takes in the `name`, the rate in `stars` and the `price` as number of dollar signs.
+    * `toString()` method that return back the information about the object as string.
+    * `addReview()` method that is overrided from `Review` interface, this method takes in 3 parameters(the body of the review as String, the author of the review, and the number of starts that the reviewer rates).
+    * getters and setter methods for `name`, `stars`, `price`.
+    * `updateStars`() method to update the number of stars and keep it in the range(1-5) stars.
+
+3. `LibraryTest` [class](inheritance/lib/src/test/java/inheritance/LibraryTest.java) that tests 2 cases which are theh number of starts before and after adding a review.
+
 
 
 

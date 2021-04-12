@@ -1,6 +1,6 @@
 package inheritance;
 
-public class Restaurant implements Review{
+public class Restaurant{
     private String name;
     private int stars;
     private String price;
@@ -28,13 +28,13 @@ public class Restaurant implements Review{
             this.stars = stars;
     }
 
-    @Override
-    public String addReview(String body, String author, int stars) {
-        updateStars(stars);
-        return "review:" + body + "\n" +
-                "Author:" + author +"\n" +
-                "rate: " + stars + " stars";
-    }
+//    @Override
+//    public String addReview(String body, String author, int stars) {
+//        updateStars(stars);
+//        return "review:" + body + "\n" +
+//                "Author:" + author +"\n" +
+//                "rate: " + stars + " stars";
+//    }
 
 
     public String getName() {
