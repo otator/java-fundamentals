@@ -5,9 +5,10 @@ package inheritance;
 
 public class Library {
     public static void main(String[] args){
-        Restaurant burgerizz = new Restaurant("Burgerizz", 3, "$$");
-        System.out.println(burgerizz.addReview("The mexican burger was very delicious", "AbdalQader Mhemed", 5));
-        System.out.println(burgerizz.toString());
-
+//        Restaurant burgerizz = new Restaurant("Burgerizz", 3, "$$");
+//        System.out.println(burgerizz.addReview("The mexican burger was very delicious", "AbdalQader Mhemed", 5));
+//        System.out.println(burgerizz.toString());
+        Shop mcdonalds  = new Shop("McDonald's", "The most popular snacks restaurant", "$$");
+        System.out.println(mcdonalds);
     }
 }
