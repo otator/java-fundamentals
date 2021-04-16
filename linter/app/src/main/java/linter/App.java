@@ -40,6 +40,7 @@ public class App {
         try {
             file = new FileReader(fileName);
             reader = new BufferedReader(file);
+            System.out.println("--------------------------"+fileName.substring(3)+"-------------------------------");
             while ((line = reader.readLine()) != null){
                 lineNumber++;
                 if(line.length() > 0){
@@ -57,7 +58,7 @@ public class App {
         return missedSemiColons;
     }
     public static boolean check(String line, char c){
-            if(line.contains("if") || line.contains("else"))
+            if(line.contains("if") || line.contains("else") || line.contains("//"))
                 return false;
             else if(c == ')')
                 return true;
