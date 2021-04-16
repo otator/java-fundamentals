@@ -11,17 +11,30 @@ public class AppTest {
 
 
     @Test
-    public void testJavaScriptLinter(){
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+    public void testLinterOneError(){
         int one = App.javaScriptLinter("../one.js");
-        int empty = App.javaScriptLinter("../empty.js");
-        int few = App.javaScriptLinter("../few.js");
-        int correct = App.javaScriptLinter("../correct.js");
-        int many = App.javaScriptLinter("../gates.js");
         assertEquals("This method tests 1 error in file ", 1,one);
+    }
+    @Test
+    public void testLinterFewErrors() {
+        int few = App.javaScriptLinter("../few.js");
+        assertEquals("This method tests 2 errors in file ", 2, few);
+    }
+    @Test
+    public void testLinterEmptyFile(){
+        int empty = App.javaScriptLinter("../empty.js");
+
         assertEquals("This method tests 0 errors in file ", 0,empty);
-        assertEquals("This method tests 2 errors in file ", 2,few);
+
+    }
+    @Test
+    public void testLinterManyErrors(){
+        int many = App.javaScriptLinter("../gates.js");
+        assertEquals("This method tests one error in file ", 42,many);
+    }
+    @Test
+    public void testLinterNoErrors(){
+        int correct = App.javaScriptLinter("../correct.js");
         assertEquals("This method tests 0 error in file ", 0,correct);
-        assertEquals("This method tests one error in file ", 46,many);
     }
 }
