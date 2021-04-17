@@ -1,40 +1,26 @@
 package inheritance;
 
-public class Restaurant{
+import java.util.ArrayList;
+import java.util.Objects;
+
+public class Restaurant implements Reviewable{
     private String name;
-    private int stars;
+    private double stars;
     private String price;
-    public Restaurant(String name, int stars, String price){
+    ArrayList<Review> reviews = new ArrayList<>();
+    public Restaurant(String name, String price){
         this.name = name;
-        updateStars(stars);
         this.price = price;
+        stars = 0;
     }
 
-    @Override
-    public String toString() {
-        return "Restaurant{" +
-                "name='" + name + '\'' +
-                ", stars=" + stars +
-                ", price='" + price + '\'' +
-                '}';
+    private double getAverageStarsRating(){
+        double sum = 0;
+        for(Review review: reviews)
+            sum+=review.getStars();
+        return sum/reviews.size();
     }
 
-    private void updateStars(int stars){
-        if(stars > 5)
-            this.stars = 5;
-        else if(stars < 1)
-            this.stars = 1;
-        else
-            this.stars = stars;
-    }
-
-//    @Override
-//    public String addReview(String body, String author, int stars) {
-//        updateStars(stars);
-//        return "review:" + body + "\n" +
-//                "Author:" + author +"\n" +
-//                "rate: " + stars + " stars";
-//    }
 
 
     public String getName() {
@@ -45,11 +31,11 @@ public class Restaurant{
         this.name = name;
     }
 
-    public int getStars() {
+    public double getStars() {
         return stars;
     }
 
-    public void setStars(int stars) {
+    public void setStars(double stars) {
         this.stars = stars;
     }
 
@@ -59,5 +45,36 @@ public class Restaurant{
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public void addReview(Review review){
+        if(!reviews.contains(review)){
+            reviews.add(review);
+            stars = getAverageStarsRating();
+        }
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Restaurant that = (Restaurant) o;
+        return Double.compare(that.stars, stars) == 0 && Objects.equals(name, that.name) && Objects.equals(price, that.price) && Objects.equals(reviews, that.reviews);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, stars, price, reviews);
+    }
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "name='" + name + '\'' +
+                ", stars=" + stars +
+                ", price='" + price + '\'' +
+                ", reviews: " + reviews +
+                "}";
     }
 }
