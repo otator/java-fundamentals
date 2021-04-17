@@ -79,9 +79,9 @@ this method tests `javaScriptLinter()` with five different files as described in
 ## Lab_06 
 in this lab there is one concrete class had been created in addition to one interface
 
-1. `Review: interface` is an [interface](inheritance/lib/src/main/java/inheritance/Review.java) that has only one method which is `addReview`.
+1. `Review: class` is an [class](inheritance/lib/src/main/java/inheritance/Review.java) 
 
-2. `Restaurant: class` is a [class](inheritance/lib/src/main/java/inheritance/Restaurant.java) that implements the `Review` interface and has the following:
+2. `Restaurant: class` is a [class](inheritance/lib/src/main/java/inheritance/Restaurant.java) has the following:
 
     * a constructor that takes in the `name`, the rate in `stars` and the `price` as number of dollar signs.
     * `toString()` method that return back the information about the object as string.
@@ -90,6 +90,32 @@ in this lab there is one concrete class had been created in addition to one inte
     * `updateStars`() method to update the number of stars and keep it in the range(1-5) stars.
 
 3. `LibraryTest` [class](inheritance/lib/src/test/java/inheritance/LibraryTest.java) that tests 2 cases which are theh number of starts before and after adding a review.
+
+
+## Lab_07 
+for this lab two new concrete classes [Shop.java](inheritance/lib/src/main/java/inheritance/Shop.java) and [Theater.java](inheritance/lib/src/main/java/inheritance/Theater.java)had been add to the code of lab_06
+
+in addition to that an interface named [Reviewable.java](inheritance/lib/src/main/java/inheritance/Reviewable.java) added as well.
+
+the [Reviewable.java](inheritance/lib/src/main/java/inheritance/Reviewable.java) interface had only one method called `addReview(Review r)`
+
+and all of the three classes implemented this interface and implemented that method.
+
+**Theater:**
+has the following:
+`name`, `stars`, and `movie` fileds
+
+`addMovie(String movie)` adds a movie to the theater
+`deleteMovie(String movie)` deletes movie from the theater
+
+
+**Shop:**
+
+has a `name`, `stars`, and `description` fields
+
+the two class have getters and setter for all their fileds, and they all overrides equals, hasCode, and addReview methods
+
+inside [LibraryTest](inheritance/lib/src/test/java/inheritance/LibraryTest.java) all the functionality tested
 
 
 
