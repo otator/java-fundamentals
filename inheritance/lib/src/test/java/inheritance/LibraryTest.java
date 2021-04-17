@@ -7,18 +7,100 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LibraryTest {
-    @Test public void testNumberOfStartsbeforeChange() {
-        Restaurant burgerizz = new Restaurant("Burgerizz", 3, "$$");
-        int numberOfStarts = burgerizz.getStars();
-        assertEquals("should test starts before review", 3, numberOfStarts);
-
-
+    @Test
+    public void testNumberOfStars() {
+        Restaurant burgerizz = new Restaurant("Burgerizz", "$$$");
+        Review burgerizzReview1 = new Review("AbdalQader",5, "The mexican burger was very delicious" );
+        Review burgerizzReview2 = new Review("Ahmed",3, "The machine burger was good but it is expensive");
+        burgerizz.addReview(burgerizzReview1);
+        burgerizz.addReview(burgerizzReview2);
+        double expected = 4.0;
+        assertEquals("tests stars rating",expected, burgerizz.getStars(),0);
     }
-    @Test public void testNumberOfStartsAfterChange() {
-        Restaurant burgerizz = new Restaurant("Burgerizz", 3, "$$");
-        burgerizz.addReview("The mexican burger was very delicious", "AbdalQader Mhemed", 5);
-        int numberOfStarts = burgerizz.getStars();
-        assertEquals("should test starts before review", 5, numberOfStarts);
+    @Test
+    public void testNumberOfStarsRepeatedReview() {
+        Restaurant burgerizz = new Restaurant("Burgerizz", "$$$");
+        Review burgerizzReview1 = new Review("AbdalQader",5, "The mexican burger was very delicious" );
+        Review burgerizzReview2 = new Review("Ahmed",3, "The machine burger was good but it is expensive");
+        Review burgerizzReview3 = new Review("AbdalQader",5, "The mexican burger was very delicious" );
+        burgerizz.addReview(burgerizzReview1);
+        burgerizz.addReview(burgerizzReview2);
+        burgerizz.addReview(burgerizzReview3);
+        double expected = 4.0;
+        assertEquals("tests stars rating",expected, burgerizz.getStars(),0);
+    }
 
+    @Test
+    public void testNumberOfStarsForShop(){
+        Shop shop1 = new Shop("zara", "a shop that sells clothes, perfumes and other stuff", "$$$$");
+        Review reviewShop11 = new Review("AbdalQader", 2, "This shop is so expensive and their clothes are bad");
+        Review reviewShop12 =  new Review("Anas", 5, "I like Zara their outlet is amazing");
+        shop1.addReview(reviewShop11);
+        shop1.addReview(reviewShop12);
+        double expectedStars = 3.5;
+        assertEquals("tests number of stars for a shop", expectedStars, shop1.getStars(),0);
+    }
+
+    @Test
+    public void testNumberOfStarsForTheater(){
+        Theater theater = new Theater("Grand Cinema");
+        theater.addMovie("The Prestige");
+        Review reviewTheater1 = new Review("AbdalQader", 5,"The theater is good, I liked The prestige movie", "The Prestige");
+        Review reviewTheater2 = new Review("Anas", 1, "The speaker are so loud, and I liked The prestige movie");
+        theater.addReview(reviewTheater1);
+        theater.addReview(reviewTheater2);
+        double expectedStars = 3.0;
+        assertEquals("tests number of stars for a theater", expectedStars, theater.getStars(),0);
+    }
+    @Test
+    public void testShopHasNoMovieInReview(){
+        String expected = "Shop{name='zara', stars=3.5, description='a shop that sells clothes, perfumes and other stuff'," +
+                " price='$$$$', reviews: [Review{author='AbdalQader', stars=2, body='This shop is so expensive and their clothes are bad'}," +
+                " Review{author='Anas', stars=5, body='I like Zara their outlet is amazing'}]}";
+        Shop shop1 = new Shop("zara", "a shop that sells clothes, perfumes and other stuff", "$$$$");
+        Shop shop2 = new Shop("kitchen", "a shop that sells kitchen stuff", "$$");
+        Review reviewShop11 = new Review("AbdalQader", 2, "This shop is so expensive and their clothes are bad");
+        Review reviewShop12 =  new Review("Anas", 5, "I like Zara their outlet is amazing");
+        shop1.addReview(reviewShop11);
+        shop1.addReview(reviewShop12);
+        assertEquals("tests shop has no movie in review ", expected, shop1.toString());
+    }
+    @Test
+    public void testRestaurantHasNoMovieInReview(){
+        Restaurant restaurant1 = new Restaurant("Burgerizz", "$$$");
+        Review burgerizzReview1 = new Review("AbdalQader",5, "The mexican burger was very delicious" );
+        Review burgerizzReview2 = new Review("Ahmed",3, "The machine burger was good but it is expensive");
+        restaurant1.addReview(burgerizzReview1);
+        restaurant1.addReview(burgerizzReview2);
+        String expected ="Restaurant{name='Burgerizz', stars=4.0, price='$$$', reviews: [Review{author='AbdalQader'," +
+                " stars=5, body='The mexican burger was very delicious'}, Review{author='Ahmed', stars=3," +
+                " body='The machine burger was good but it is expensive'}]}";
+        assertEquals("tests restaurant has no movie in review ", expected, restaurant1.toString());
+    }
+
+    @Test
+    public void testTheaterHasNoMovieInReview(){
+
+        Theater theater = new Theater("Grand Cinema");
+        theater.addMovie("The Prestige");
+        Review reviewTheater1 = new Review("Anas", 1, "The speaker are so loud, and I liked The prestige movie");
+        theater.addReview(reviewTheater1);
+        String expected ="Theater{name='Grand Cinema', stars=1.0, movies=[The Prestige], reviews: [Review{author='Anas'," +
+                " stars=1, body='The speaker are so loud, and I liked The prestige movie'}]}";
+        assertEquals("tests restaurant has no movie in review ", expected, theater.toString());
+    }
+
+    @Test
+    public void testTheaterHasMovieInReview(){
+        Theater theater = new Theater("Grand Cinema");
+        theater.addMovie("The Prestige");
+        Review reviewTheater1 = new Review("AbdalQader", 5,"The theater is good, I liked The prestige movie", "The Prestige");
+        Review reviewTheater2 = new Review("Anas", 1, "The speaker are so loud, and I liked The prestige movie");
+        theater.addReview(reviewTheater1);
+        theater.addReview(reviewTheater2);
+        String expected ="Theater{name='Grand Cinema', stars=3.0, movies=[The Prestige], reviews: [Review{author='AbdalQader'," +
+                " stars=5, body='The theater is good, I liked The prestige movie' the movie was: The Prestige}," +
+                " Review{author='Anas', stars=1, body='The speaker are so loud, and I liked The prestige movie'}]}";
+        assertEquals("tests restaurant has no movie in review ", expected, theater.toString());
     }
 }

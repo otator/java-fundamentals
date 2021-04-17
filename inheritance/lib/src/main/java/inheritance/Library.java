@@ -3,12 +3,34 @@
  */
 package inheritance;
 
+import java.util.ArrayList;
+
 public class Library {
     public static void main(String[] args){
-//        Restaurant burgerizz = new Restaurant("Burgerizz", 3, "$$");
-//        System.out.println(burgerizz.addReview("The mexican burger was very delicious", "AbdalQader Mhemed", 5));
-//        System.out.println(burgerizz.toString());
-        Shop mcdonalds  = new Shop("McDonald's", "The most popular snacks restaurant", "$$");
-        System.out.println(mcdonalds);
+        Restaurant burgerizz = new Restaurant("Burgerizz", "$$$");
+        Restaurant buffalo = new Restaurant("Buffalo", "$$$");
+
+        Review burgerizzReview1 = new Review("AbdalQader",5, "The mexican burger was very delicious" );
+        Review burgerizzReview2 = new Review("Ahmed",3, "The machine burger was good but it is expensive");
+        burgerizz.addReview(burgerizzReview1);
+        burgerizz.addReview(burgerizzReview2);
+        System.out.println(burgerizz);
+
+        Shop shop1 = new Shop("zara", "a shop that sells clothes, perfumes and other stuff", "$$$$");
+        Shop shop2 = new Shop("kitchen", "a shop that sells kitchen stuff", "$$");
+        Review reviewShop11 = new Review("AbdalQader", 2, "This shop is so expensive and their clothes are bad");
+        Review reviewShop12 =  new Review("Anas", 5, "I like Zara their outlet is amazing");
+        shop1.addReview(reviewShop11);
+        shop1.addReview(reviewShop12);
+        System.out.println(shop1);
+
+
+        Theater theater = new Theater("Grand Cinema");
+        theater.addMovie("The Prestige");
+//        Review reviewTheater1 = new Review("AbdalQader", 5,"The theater is good, I liked The prestige movie", "The Prestige");
+        Review reviewTheater2 = new Review("Anas", 1, "The speaker are so loud, and I liked The prestige movie");
+//        theater.addReview(reviewTheater1);
+        theater.addReview(reviewTheater2);
+        System.out.println(theater);
     }
 }
